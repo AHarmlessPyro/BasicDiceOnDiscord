@@ -31,14 +31,16 @@ function buildNumericalList(dice_count, dice_size, add_sub = '+', increment_coun
 client.on('message', msg => {
     //console.log(msg);
     if (/^!roll .*/.test(msg.content)) {
-        const reg = /(?:(?<dice_count>\d+)[dD](?<dice_size>\d+))+(?: )?(?:(?<add_sub>[\+-]) *(?<constant>\d*$))*/gm;
+        const reg = /(?:(?<dice_count>\d+)[dD](?<dice_size>\d+))+(?: )?(?:(?<add_sub>[\+-]) *(?<constant>\d*))*/gm;
         let match, results = [];
-        let sequence = [];
         let sum = 0;
         let stringFin = '';
+        let err_flag = false;
         console.log(msg.content);
         do {
             match = reg.exec(msg.content);
+            // console.log(match);
+            // console.log(match && match !== null);
             if (match) {
                 results.push(match);
                 if (match.groups.add_sub) {
@@ -72,8 +74,14 @@ client.on('message', msg => {
 
                     sum += value[0];
                 }
+            } else {
+                // msg.reply('Formatting error. Use format of !roll nDm + o');
+                // err_flag = true;
+                // break;
             }
         } while (match)
-        msg.reply(`${sum} : \n${stringFin} `);
+        if (!err_flag) {
+            msg.reply(`${sum} : \n${stringFin} `);
+        }
     }
 });
