@@ -91,7 +91,7 @@ client.on('message', msg => {
         } while (match)
         if (!err_flag) {
             if (lastComment) {
-                msg.reply(`Rolling for ${comment} : ${sum} \n Original Roll(s) : ${stringFin} `);
+                msg.reply(`Rolling for ${lastComment} : ${sum} \n Original Roll(s) : ${stringFin} `);
             }
             else {
                 msg.reply(`${sum} : \n Original Roll(s) : ${stringFin} `);
