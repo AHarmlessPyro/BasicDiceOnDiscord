@@ -26,7 +26,7 @@ function buildNumericalList(dice_count, dice_size, add_sub = '+', increment_coun
 
 client.on('message', msg => {
     if (/^!roll .*/.test(msg.content)) {
-        const reg = /(?:(?<dice_count>\d+)[dD](?<dice_size>\d+))+(?: *(?<add_sub>[\+-]) *(?<constant>\d*))?\s*(?:#(?<comment>\w+))?/gm;
+        const reg = /(?:(?<dice_count>\d+)[dD](?<dice_size>\d+))+(?: *(?<add_sub>[\+-](?! ?\w+[dD]\w)) *(?<constant>\d*(?!d)))?\s*(?:#(?<comment>.+))?/gm;
         let match, results = [];
         let sum = 0;
         let stringFin = '';
