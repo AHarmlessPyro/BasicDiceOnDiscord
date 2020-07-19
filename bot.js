@@ -60,7 +60,7 @@ client.on('message', msg => {
 
                 for (let i = 0; i < value[1].length; i++) {
                     if (value[1].length !== i + 1) {
-                        stringFin += `${value[1][i]} (${value[2]}),`;
+                        stringFin += `${value[1][i]}),`;
                     } else {
                         stringFin += `${value[1][i]} (${value[2]})\n`;
                     }
