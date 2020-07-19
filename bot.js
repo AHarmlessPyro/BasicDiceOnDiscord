@@ -21,7 +21,7 @@ function buildNumericalList(dice_count, dice_size, add_sub = '+', increment_coun
     let addition_value = (add_sub === '+' ? increment_count : -increment_count);
 
     sum += addition_value;
-    return ([sum, currentList]);
+    return ([sum, currentList, `d${dice_size}`]);
 }
 
 client.on('message', msg => {
@@ -60,9 +60,9 @@ client.on('message', msg => {
 
                 for (let i = 0; i < value[1].length; i++) {
                     if (value[1].length !== i + 1) {
-                        stringFin += `${value[1][i]},`;
+                        stringFin += `${value[1][i]} (${value[2]}),`;
                     } else {
-                        stringFin += `${value[1][i]}\n`;
+                        stringFin += `${value[1][i]} (${value[2]})\n`;
                     }
                 }
 
