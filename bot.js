@@ -25,7 +25,7 @@ function buildNumericalList({ dice_count, dice_size, add_sub = '+', increment_co
 
     switch (dice_to_keep) {
         case 'a':
-            sum = currentList.reduce((current) => {
+            currentList.forEach((current) => {
                 total.List = [...total.List, current];
                 total.sum += current;
             });
@@ -39,7 +39,7 @@ function buildNumericalList({ dice_count, dice_size, add_sub = '+', increment_co
                 return -a + b;
             })
 
-            sum = sortedList.forEach((currentValue, currentIndex) => {
+            sortedList.forEach((currentValue, currentIndex) => {
                 if (currentIndex < dice_number_to_keep) {
                     total.List = [...total.List, `${currentValue}`];
                     total.sum += currentValue;
@@ -57,7 +57,7 @@ function buildNumericalList({ dice_count, dice_size, add_sub = '+', increment_co
                 return a - b;
             })
 
-            sum = sortedList.forEach((currentValue, currentIndex) => {
+            sortedList.forEach((currentValue, currentIndex) => {
                 if (currentIndex < dice_number_to_keep) {
                     total.List = [...total.List, `${currentValue}`];
                     total.sum += currentValue;
